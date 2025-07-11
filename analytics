@@ -1,0 +1,163 @@
+import React from 'react';
+import { TrendingUp, Calendar, Users, Award } from 'lucide-react';
+
+const Analytics = () => {
+const monthlyData = [
+{ month: 'Jan', predicted: 45, actual: 38, accuracy: 84 },
+{ month: 'Feb', predicted: 52, actual: 49, accuracy: 94 },
+{ month: 'Mar', predicted: 38, actual: 35, accuracy: 92 },
+{ month: 'Apr', predicted: 41, actual: 44, accuracy: 93 },
+{ month: 'May', predicted: 35, actual: 32, accuracy: 91 },
+{ month: 'Jun', predicted: 48, actual: 46, accuracy: 96 }
+];
+
+const teamPerformance = [
+{ agent: 'Sarah Johnson', resolved: 89, breached: 3, accuracy: 96.7 },
+{ agent: 'Mike Chen', resolved: 76, breached: 7, accuracy: 91.6 },
+{ agent: 'Lisa Park', resolved: 94, breached: 2, accuracy: 97.9 },
+{ agent: 'David Kim', resolved: 67, breached: 8, accuracy: 89.3 },
+{ agent: 'Emma Wilson', resolved: 82, breached: 4, accuracy: 95.3 }
+];
+
+return (
+<div className="space-y-6">
+<div>
+<h2 className="text-2xl font-bold text-gray-900">Analytics & Insights</h2>
+<p className="text-gray-600 mt-1">Comprehensive analysis of SLA performance and prediction accuracy</p>
+</div>
+
+{/* Summary Cards */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div className="flex items-center justify-between">
+<div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center">
+<Award className="w-6 h-6 text-green-600" />
+</div>
+<span className="text-sm text-green-600 font-medium">+2.3%</span>
+</div>
+<div className="mt-4">
+<h3 className="text-2xl font-bold text-gray-900">92.1%</h3>
+<p className="text-gray-600 text-sm">Model Accuracy</p>
+</div>
+</div>
+
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div className="flex items-center justify-between">
+<div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+<TrendingUp className="w-6 h-6 text-blue-600" />
+</div>
+<span className="text-sm text-blue-600 font-medium">+5.7%</span>
+</div>
+<div className="mt-4">
+<h3 className="text-2xl font-bold text-gray-900">87.4%</h3>
+<p className="text-gray-600 text-sm">Prediction Precision</p>
+</div>
+</div>
+
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div className="flex items-center justify-between">
+<div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center">
+<Calendar className="w-6 h-6 text-purple-600" />
+</div>
+<span className="text-sm text-red-600 font-medium">-1.2%</span>
+</div>
+<div className="mt-4">
+<h3 className="text-2xl font-bold text-gray-900">244</h3>
+<p className="text-gray-600 text-sm">Breaches Prevented</p>
+</div>
+</div>
+
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div className="flex items-center justify-between">
+<div className="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center">
+<Users className="w-6 h-6 text-amber-600" />
+</div>
+<span className="text-sm text-green-600 font-medium">+8.1%</span>
+</div>
+<div className="mt-4">
+<h3 className="text-2xl font-bold text-gray-900">15.2h</h3>
+<p className="text-gray-600 text-sm">Avg Response Time</p>
+</div>
+</div>
+</div>
+
+{/* Monthly Trends */}
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<h3 className="text-lg font-semibold text-gray-900 mb-6">Monthly Prediction Accuracy</h3>
+<div className="space-y-4">
+{monthlyData.map((data, index) => (
+<div key={index} className="flex items-center space-x-4">
+<div className="w-12 text-sm font-medium text-gray-600">{data.month}</div>
+<div className="flex-1 grid grid-cols-3 gap-4">
+<div>
+<div className="text-xs text-gray-500 mb-1">Predicted</div>
+<div className="text-sm font-medium">{data.predicted}</div>
+</div>
+<div>
+<div className="text-xs text-gray-500 mb-1">Actual</div>
+<div className="text-sm font-medium">{data.actual}</div>
+</div>
+<div>
+<div className="text-xs text-gray-500 mb-1">Accuracy</div>
+<div className="flex items-center space-x-2">
+<div className="text-sm font-medium">{data.accuracy}%</div>
+<div className="flex-1 bg-gray-100 rounded-full h-2">
+<div
+className="bg-blue-500 h-2 rounded-full"
+style={{ width: `${data.accuracy}%` }}
+/>
+</div>
+</div>
+</div>
+</div>
+</div>
+))}
+</div>
+</div>
+
+{/* Team Performance */}
+<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<h3 className="text-lg font-semibold text-gray-900 mb-6">Team Performance</h3>
+<div className="overflow-x-auto">
+<table className="w-full">
+<thead>
+<tr className="border-b border-gray-200">
+<th className="text-left py-3 text-sm font-medium text-gray-500">Agent</th>
+<th className="text-left py-3 text-sm font-medium text-gray-500">Resolved</th>
+<th className="text-left py-3 text-sm font-medium text-gray-500">Breached</th>
+<th className="text-left py-3 text-sm font-medium text-gray-500">Success Rate</th>
+<th className="text-left py-3 text-sm font-medium text-gray-500">Performance</th>
+</tr>
+</thead>
+<tbody className="divide-y divide-gray-200">
+{teamPerformance.map((agent, index) => (
+<tr key={index} className="hover:bg-gray-50">
+<td className="py-4 text-sm font-medium text-gray-900">{agent.agent}</td>
+<td className="py-4 text-sm text-gray-600">{agent.resolved}</td>
+<td className="py-4 text-sm text-gray-600">{agent.breached}</td>
+<td className="py-4 text-sm text-gray-600">{agent.accuracy}%</td>
+<td className="py-4">
+<div className="flex items-center space-x-2">
+<div className="w-20 bg-gray-100 rounded-full h-2">
+<div
+className={`h-2 rounded-full ${
+agent.accuracy > 95 ? 'bg-green-500' :
+agent.accuracy > 90 ? 'bg-amber-500' : 'bg-red-500'
+}`}
+style={{ width: `${agent.accuracy}%` }}
+/>
+</div>
+<span className="text-xs text-gray-500">{agent.accuracy}%</span>
+</div>
+</td>
+</tr>
+))}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+);
+};
+
+export default Analytics;
